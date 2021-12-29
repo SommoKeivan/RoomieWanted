@@ -1,0 +1,9 @@
+1- fix the aesthetic design part
+2- search system that works from the homepage
+3- realistic match system --> it is currently printed on screen 100% for everyone
+4- profile: switch state button that changes the status from "looking" to "found" and vice versa.
+
+missing but unimportant parts:
+- registration of a new profile
+- editing a profile
+- beautify "homepage_not_logged.php", or the home page, when the user is not logged in
