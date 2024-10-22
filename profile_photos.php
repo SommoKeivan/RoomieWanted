@@ -1,13 +1,17 @@
 <?php
-require_once("bootstrap.php");
-$templateParams["sideMenu"] = true;
-$templateParams["footer"] = true;
-$templateParams["title"] = "RoomieWanted - Profile Photos";
-$templateParams["name"] = "photos.php";
-$templateParams["username"] = $dbh->getUsernameById($_GET['id']);
-$templateParams["pics"] = $dbh->getPhotosById($_GET['id']);
-$templateParams["js"] = array("js/ajaxRequests.js");
+require_once("bootstrap.php");  // Include bootstrap
 
-require("template/base.php");
+$id = $_GET['id'];  // Store user ID for easier reference
 
+$templateParams = [
+    "sideMenu" => true,  // Enable side menu
+    "footer" => true,    // Enable footer
+    "title" => "RoomieWanted - Profile Photos",  // Set page title
+    "name" => "photos.php",  // Set template file
+    "username" => $dbh->getUsernameById($id),  // Fetch username
+    "pics" => $dbh->getPhotosById($id),  // Fetch photos
+    "js" => ["js/ajaxRequests.js"]  // Include JS files
+];
+
+require("template/base.php");  // Load base template
 ?>

@@ -1,9 +1,8 @@
 <?php
-require_once("bootstrap.php");
+require_once("bootstrap.php");  // Include bootstrap
 
-unset($_SESSION["isLogged"]);
-unset($_SESSION["username"]);
-unset($_SESSION["userID"]);
+// Clear user session data
+unset($_SESSION["isLogged"], $_SESSION["username"], $_SESSION["userID"]);
 
-require("./index.php");
+require("./index.php");  // Redirect to index
 ?>

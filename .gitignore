@@ -1,0 +1,42 @@
+# Composer dependencies
+/vendor/
+
+# Node modules (if applicable)
+node_modules/
+
+# Logs
+*.log
+
+# PHPStorm or other IDE settings
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# System files
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build and output directories
+/build/
+dist/
+
+# Cache
+/cache/
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+
+# PHPUnit
+.phpunit.result.cache
+
+# TODO
+TODO.txt

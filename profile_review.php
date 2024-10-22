@@ -1,12 +1,16 @@
 <?php
-require_once("bootstrap.php");
-$templateParams["sideMenu"] = true;
-$templateParams["footer"] = false;
-$templateParams["title"] = "RoomieWanted - Review";
-$templateParams["name"] = "review_screen.php";
-$templateParams["profile"] = $dbh->getProfileById($_GET['id']);
+require_once("bootstrap.php");  // Include bootstrap
 
-$templateParams["js"] = array("js/ajaxRequests.js","js/send_review.js","js/likedProfile.js");
+$id = $_GET['id'];  // Store user ID for easier reference
 
-require("template/base.php");
+$templateParams = [
+    "sideMenu" => true,  // Enable side menu
+    "footer" => false,    // Disable footer
+    "title" => "RoomieWanted - Review",  // Set page title
+    "name" => "review_screen.php",  // Set template file
+    "profile" => $dbh->getProfileById($id),  // Fetch profile data
+    "js" => ["js/ajaxRequests.js", "js/send_review.js", "js/likedProfile.js"]  // Include JS files
+];
+
+require("template/base.php");  // Load base template
 ?>

@@ -1,10 +1,12 @@
 <?php
-require_once("bootstrap.php");
-$templateParams["sideMenu"] = false;
-$templateParams["footer"] = false;
+require_once("bootstrap.php");  // Include bootstrap
 
-$templateParams["title"] = "RoomieWanted - Privacy Policy";
-$templateParams["name"] = "privacy_policy.php";
+$templateParams = [
+    "sideMenu" => false,  // Disable side menu
+    "footer" => false,     // Disable footer
+    "title" => "RoomieWanted - Privacy Policy",  // Set page title
+    "name" => "privacy_policy.php"  // Set template file
+];
 
-require("template/base.php");
+require("template/base.php");  // Load base template
 ?>

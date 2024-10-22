@@ -1,22 +1,23 @@
 <?php
-require_once("bootstrap.php");
+require_once("bootstrap.php");  // Include bootstrap
 
-//Base template
-$templateParams["title"] = "RoomieWanted - Search Result";
-$templateParams["event"] = "profile_miniature.php";
-$templateParams["name"] = "search_result_screen.php";
+// Base template configuration
+$templateParams = [
+    "title" => "RoomieWanted - Search Result",  // Set page title
+    "event" => "profile_miniature.php",  // Set profile miniature template
+    "name" => "search_result_screen.php",  // Set template file name
+    "type" => "result",  // Set type for the template
+    "sideMenu" => true,  // Enable side menu
+    "footer" => true,    // Enable footer
+    "search_string" => null  // Placeholder for search string
+];
 
-$templateParams["type"] = "result";
-$templateParams["sideMenu"] = true;
-$templateParams["footer"] = true;
-
-$templateParams["search_string"] = null; //TODO: here the string resulting from the application of the filters must be entered.
-                                         // Currently all users in the database are shown;
-
-//Particular template
-if(isset($_SESSION["isLogged"])){
+// Load users based on search criteria if the user is logged in
+if (isset($_SESSION["isLogged"])) {
     $templateParams["users_found"] = $dbh->getUsersFromResearch($templateParams["search_string"]);
 }
-$templateParams["js"] = array("js/ajaxRequests.js","js/likedProfile.js");
-require("template/base.php");
+
+$templateParams["js"] = ["js/ajaxRequests.js", "js/likedProfile.js"];  // Include necessary JS files
+
+require("template/base.php");  // Load base template
 ?>

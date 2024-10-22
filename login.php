@@ -1,12 +1,13 @@
 <?php
-require_once("bootstrap.php");
-$templateParams["sideMenu"] = false;
-$templateParams["footer"] = false;
+require_once("bootstrap.php");  // Include bootstrap
 
-//Base template
-$templateParams["title"] = "RoomieWanted - Login";
-$templateParams["name"] = "login-template.php";
-$templateParams["js"] = array("js/ajaxRequests.js","js/onLogin.js");
+$templateParams = [
+    "sideMenu" => false,  // Disable side menu
+    "footer" => false,     // Disable footer
+    "title" => "RoomieWanted - Login",  // Set page title
+    "name" => "login-template.php",  // Set template file
+    "js" => ["js/ajaxRequests.js", "js/onLogin.js"]  // Include JS files
+];
 
-require("template/base.php");
+require("template/base.php");  // Load base template
 ?>

@@ -1,22 +1,31 @@
 <?php
-require_once("bootstrap.php");
-$templateParams["sideMenu"] = true;
-$templateParams["footer"] = true;
-$templateParams["title"] = "RoomieWanted - Profile";
-$templateParams["name"] = "profile_open.php";
-$templateParams["profile"] = $dbh->getProfileById($_GET['id']);
-$templateParams["tags"] = $dbh->getTagsFromUser($_GET['id']);
-$templateParams["languages"] = $dbh->getLanguagesById($_GET['id']);
-$templateParams["neighborhoods"] = $dbh->getNeighborhoodsById($_GET['id']);
-$templateParams["pics"] = $dbh->getTopNPhotosById($_GET['id'], '3');
+require_once("bootstrap.php");  // Include setup
 
-$templateParams["isReviewed"] = $dbh->isReviewed($_GET['id']);
-if ($templateParams["isReviewed"]){
-    $templateParams["lastReview"] = $dbh->getLastReviewById($_GET['id']);
-    $templateParams["lastReviewSender"] = $dbh->getProfileById(($templateParams["lastReview"])["senderID"]);
+$id = $_GET['id'];  // Store the user ID for easier reference
+
+$templateParams = [
+    "sideMenu" => true,  // Enable side menu
+    "footer" => true,    // Enable footer
+    "title" => "RoomieWanted - Profile",  // Set page title
+    "name" => "profile_open.php"  // Set template file
+];
+
+// Fetch all profile-related data
+$templateParams["profile"] = $dbh->getProfileById($id);
+$templateParams["tags"] = $dbh->getTagsFromUser($id);
+$templateParams["languages"] = $dbh->getLanguagesById($id);
+$templateParams["neighborhoods"] = $dbh->getNeighborhoodsById($id);
+$templateParams["pics"] = $dbh->getTopNPhotosById($id, '3');
+
+// Check if the profile has been reviewed
+$templateParams["isReviewed"] = $dbh->isReviewed($id);
+if ($templateParams["isReviewed"]) {
+    $lastReview = $dbh->getLastReviewById($id);  // Fetch last review
+    $templateParams["lastReview"] = $lastReview;
+    $templateParams["lastReviewSender"] = $dbh->getProfileById($lastReview["senderID"]);  // Get review sender profile
 }
-$templateParams["js"] = array("js/ajaxRequests.js","js/likedProfile.js");
 
-require("template/base.php");
+$templateParams["js"] = ["js/ajaxRequests.js", "js/likedProfile.js"];  // Include JS files
 
+require("template/base.php");  // Load base template
 ?>

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 29, 2021 alle 14:14
--- Versione del server: 10.4.22-MariaDB
--- Versione PHP: 7.4.26
+-- Created on: Dec 29, 2021 at 14:14
+-- Server version: 10.4.22-MariaDB
+-- PHP version: 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `chat_message`
+-- Structure of the table `chat_message`
 --
 
 CREATE TABLE `chat_message` (
@@ -35,7 +35,7 @@ CREATE TABLE `chat_message` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `chat_message`
+-- Dump of data for the table `chat_message`
 --
 
 INSERT INTO `chat_message` (`senderID`, `recipientID`, `text`, `date`) VALUES
@@ -54,7 +54,7 @@ INSERT INTO `chat_message` (`senderID`, `recipientID`, `text`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `countries`
+-- Structure of the table `countries`
 --
 
 CREATE TABLE `countries` (
@@ -65,7 +65,7 @@ CREATE TABLE `countries` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dump dei dati per la tabella `countries`
+-- Dump of data for the table `countries`
 --
 
 INSERT INTO `countries` (`id`, `phone_code`, `country_code`, `country_name`) VALUES
@@ -325,7 +325,7 @@ INSERT INTO `countries` (`id`, `phone_code`, `country_code`, `country_name`) VAL
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `languages`
+-- Structure of the table `languages`
 --
 
 CREATE TABLE `languages` (
@@ -334,7 +334,7 @@ CREATE TABLE `languages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `languages`
+-- Dump of data for the table `languages`
 --
 
 INSERT INTO `languages` (`ID`, `name`) VALUES
@@ -352,7 +352,7 @@ INSERT INTO `languages` (`ID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `neighborhood`
+-- Structure of the table `neighborhood`
 --
 
 CREATE TABLE `neighborhood` (
@@ -361,7 +361,7 @@ CREATE TABLE `neighborhood` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `neighborhood`
+-- Dump of data for the table `neighborhood`
 --
 
 INSERT INTO `neighborhood` (`ID`, `name`) VALUES
@@ -406,7 +406,7 @@ INSERT INTO `neighborhood` (`ID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `review`
+-- Structure of the table `review`
 --
 
 CREATE TABLE `review` (
@@ -418,7 +418,7 @@ CREATE TABLE `review` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `review`
+-- Dump of data for the table `review`
 --
 
 INSERT INTO `review` (`userID`, `senderID`, `text`, `score`, `date`) VALUES
@@ -428,7 +428,7 @@ INSERT INTO `review` (`userID`, `senderID`, `text`, `score`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `tag`
+-- Structure of the table `tag`
 --
 
 CREATE TABLE `tag` (
@@ -437,7 +437,7 @@ CREATE TABLE `tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `tag`
+-- Dump of data for the table `tag`
 --
 
 INSERT INTO `tag` (`ID`, `name`) VALUES
@@ -460,7 +460,7 @@ INSERT INTO `tag` (`ID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user`
+-- Structure of the table `user`
 --
 
 CREATE TABLE `user` (
@@ -481,7 +481,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user`
+-- Dump of data for the table `user`
 --
 
 INSERT INTO `user` (`userID`, `username`, `password`, `name`, `surname`, `birthday`, `gender`, `telephone`, `email`, `countryID`, `location`, `state`, `profile_pic`, `field_of_study`) VALUES
@@ -494,7 +494,7 @@ INSERT INTO `user` (`userID`, `username`, `password`, `name`, `surname`, `birthd
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user_language`
+-- Structure of the table `user_language`
 --
 
 CREATE TABLE `user_language` (
@@ -503,7 +503,7 @@ CREATE TABLE `user_language` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user_language`
+-- Dump of data for the table `user_language`
 --
 
 INSERT INTO `user_language` (`userID`, `languageID`) VALUES
@@ -526,7 +526,7 @@ INSERT INTO `user_language` (`userID`, `languageID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user_liked`
+-- Structure of the table `user_liked`
 --
 
 CREATE TABLE `user_liked` (
@@ -535,7 +535,7 @@ CREATE TABLE `user_liked` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user_liked`
+-- Dump of data for the table `user_liked`
 --
 
 INSERT INTO `user_liked` (`userID`, `liked_userID`) VALUES
@@ -548,7 +548,7 @@ INSERT INTO `user_liked` (`userID`, `liked_userID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user_neighborhood`
+-- Structure of the table `user_neighborhood`
 --
 
 CREATE TABLE `user_neighborhood` (
@@ -557,7 +557,7 @@ CREATE TABLE `user_neighborhood` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user_neighborhood`
+-- Dump of data for the table `user_neighborhood`
 --
 
 INSERT INTO `user_neighborhood` (`userID`, `neighborhoodID`) VALUES
@@ -579,7 +579,7 @@ INSERT INTO `user_neighborhood` (`userID`, `neighborhoodID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user_pic`
+-- Structure of the table `user_pic`
 --
 
 CREATE TABLE `user_pic` (
@@ -589,7 +589,7 @@ CREATE TABLE `user_pic` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user_pic`
+-- Dump of data for the table `user_pic`
 --
 
 INSERT INTO `user_pic` (`userID`, `name`, `date`) VALUES
@@ -612,7 +612,7 @@ INSERT INTO `user_pic` (`userID`, `name`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `user_tag`
+-- Structure of the table `user_tag`
 --
 
 CREATE TABLE `user_tag` (
@@ -621,7 +621,7 @@ CREATE TABLE `user_tag` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dump dei dati per la tabella `user_tag`
+-- Dump of data for the table `user_tag`
 --
 
 INSERT INTO `user_tag` (`userID`, `tagID`) VALUES
@@ -651,28 +651,28 @@ INSERT INTO `user_tag` (`userID`, `tagID`) VALUES
 (5, 9);
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for downloaded tables
 --
 
 --
--- Indici per le tabelle `countries`
+-- Indexes for table `countries`
 --
 ALTER TABLE `countries`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indici per le tabelle `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD UNIQUE KEY `ID` (`userID`),
   ADD KEY `userId` (`userID`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for downloaded tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `countries`
+-- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=253;

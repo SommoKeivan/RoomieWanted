@@ -1,28 +1,32 @@
 <?php
 
-class DatabaseHelper{
+class DatabaseHelper {
     private $db;
-    
-    public function __construct($servername, $username, $password, $dbname){
+
+    public function __construct($servername, $username, $password, $dbname) {
         $this->db = new mysqli($servername, $username, $password, $dbname);
-        if($this->db->connect_error){
-            die("Database connection failed!");
+        if ($this->db->connect_error) {
+            throw new Exception("Database connection failed: " . $this->db->connect_error);
         }
     }
-    
 
-    public function checkCredentials($username, $password){
-        $stmt = $this->db->prepare("SELECT * FROM user WHERE username = ? AND password = ?");
-        $stmt->bind_param("ss", $username, $password);
+    public function checkCredentials($username, $password) {
+        $stmt = $this->db->prepare("SELECT password FROM user WHERE username = ?");
+        $stmt->bind_param("s", $username);
         $stmt->execute();
         $result = $stmt->get_result();
-        if ($result->num_rows == 0){
-            return null;
+
+        if ($result->num_rows == 0) {
+            return null; // User not found
         }
-        return "yes";
+
+        $row = $result->fetch_assoc();
+        if (password_verify($password, $row['password'])) {
+            return "yes"; // Credentials are valid
+        }
+        return null; // Invalid credentials
     }
 
-    //TODO: Currently all users in the database are shown.
     public function getUsersFromResearch($keyword){
         $stmt = $this->db->prepare("SELECT * FROM user u WHERE state = 'looking'");
         // $stmt->bind_param("s", $keyword);
@@ -158,10 +162,12 @@ class DatabaseHelper{
     }
 
     public function newMessage($userID, $profileID, $text) {
-        $stmt = $this->db->prepare("INSERT INTO chat_message(senderID, recipientID, text, date) 
-        VALUES (?, ?, ?, ?)");
-        $stmt->bind_param("iiss", $userID, $profileID, $text, date("Y-m-d H:i:s"));
-        $stmt->execute();
+        $date = (new DateTime())->format('Y-m-d H:i:s');
+        $stmt = $this->db->prepare("INSERT INTO chat_message(senderID, recipientID, text, date) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("iiss", $userID, $profileID, $text, $date);
+        if (!$stmt->execute()) {
+            throw new Exception("Error inserting message: " . $stmt->error);
+        }
     }
 
     /* ---------------- Reviw system ----------------- */
